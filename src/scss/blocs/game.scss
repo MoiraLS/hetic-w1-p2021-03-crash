@@ -1,0 +1,90 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+
+  .title {
+    text-align: center;
+    font-size: 30px;
+    font-family: "Arcade Normal", monospace;
+  }
+}
+
+.room {
+  margin: auto;
+  width: 80vw;
+  height: 80vh;
+  background-image: url(../assets/hackWorld/imagesPiece1/background_room.png);
+  background-size: cover;
+  border: solid #8ad2e4 10px;
+
+  .room__room--vault {
+    grid-row: 1 / span 2;
+    grid-column: 1 / span 3;
+    background-color: #424242;
+  }
+
+  .room__player {
+    width: 80px;
+    height: 80px;
+    background-color: #7dec49;
+  }
+
+  .room__robot {
+    width: 80px;
+    height: 80px;
+    background-color: #ff0000;
+  }
+  .room__robot--one {
+    transform: translate(5px, 200px);
+  }
+  .room__robot--two {
+    transform: translate(700px, -150px);
+  }
+
+  .room__laser--one {
+    width: 900px;
+    height: 80px;
+    position: absolute;
+    top: 362px;
+    left: 230px;
+    background-color: #f75252;
+    border-top: solid 2px #ff0000;
+    border-bottom: solid 2px #ff0000;
+  }
+  .room__laser--two {
+    width: 80px;
+    height: 520px;
+    position: absolute;
+    top: 190px;
+    left: 827px;
+    background-color: #f75252;
+    border-left: solid 2px #ff0000;
+    border-right: solid 2px #ff0000;
+  }
+
+  .room__wall--right {
+    width: 10px;
+    height: 83vh;
+    position: absolute;
+    top: 80px;
+    right: 120px;
+  }
+  .room__wall--bottom {
+    width: 81vw;
+    height: 10px;
+    position: absolute;
+    bottom: 60px;
+    left: 120px;
+  }
+
+  .room__door--one {
+    width: 20px;
+    height: 100px;
+    position: absolute;
+    top: 600px;
+    left: 1130px;
+    background-color: #855a3e;
+  }
+}
