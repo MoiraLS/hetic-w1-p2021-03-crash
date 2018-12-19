@@ -1,21 +1,8 @@
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80px;
-
-  .title {
-    text-align: center;
-    font-size: 30px;
-    font-family: "Arcade Normal", monospace;
-  }
-}
-
 .room {
   margin: auto;
   width: 80vw;
   height: 80vh;
-  background-image: url(../assets/hackWorld/imagesPiece1/background_room.png);
+  background-image: url(../assets/img/imagesPiece1/background_room.png);
   background-size: cover;
   border: solid #8ad2e4 10px;
 
@@ -25,20 +12,37 @@
     position: absolute;
     top: 80px;
     left: 120px;
-    background-image: url(../assets/hackWorld/imagesPiece1/dark.jpg);
+    background-image: url(../assets/img/imagesPiece1/dark.jpg);
     border: solid #8ad2e4 10px;;
+  }
+  
+  .room__vault--goal {
+    width: 180px;
+    height: 80px;
+    position: absolute;
+    top: 70px;
+    left: 120px;
   }
 
   .room__player {
-    width: 80px;
-    height: 80px;
-    background-color: #7dec49;
+    width: 100px;
+    height: 100px;
+  }
+
+  .room__decor--top {
+    position: absolute;
+    top: 60px;
+    left: 600px;
+  }
+  .room__decor--right {
+    position: absolute;
+    top: 500px;
+    left: 1060px;
   }
 
   .room__robot {
-    width: 85px;
-    height: 85px;
-    background: #ff0000;
+    width: 110px;
+    height: 140px;
   }
   .room__robot--one {
     position: absolute;
@@ -47,26 +51,26 @@
   }
   .room__robot--two {
     position: absolute;
-    top: 100px;
-    right: 372px;
+    top: 80px;
+    right: 360px;
   }
 
   .room__laser--one {
-    width: 900px;
-    height: 80px;
+    width: 890px;
+    height: 10px;
     position: absolute;
-    top: 362px;
-    left: 230px;
+    top: 440px;
+    left: 240px;
     background-color: #f75252;
     border-top: solid 2px #ff0000;
     border-bottom: solid 2px #ff0000;
   }
   .room__laser--two {
-    width: 80px;
-    height: 520px;
+    width: 10px;
+    height: 500px;
     position: absolute;
-    top: 190px;
-    left: 827px;
+    top: 210px;
+    left: 865px;
     background-color: #f75252;
     border-left: solid 2px #ff0000;
     border-right: solid 2px #ff0000;
@@ -91,8 +95,31 @@
     width: 20px;
     height: 100px;
     position: absolute;
-    top: 600px;
-    left: 1130px;
+    top: 200px;
+    left: 1142px;
     background-color: #855a3e;
+  }
+  .room__door--two {
+    width: 100px;
+    height: 20px;
+    position: absolute;
+    top: 290px;
+    left: 280px;
+    background-color: #855a3e;
+  }
+  .room__door--office {
+    width: 20px;
+    height: 100px;
+    position: absolute;
+    top: 580px;
+    left: 118px;
+    background-color: #855a3e;
+  }
+  .room__door--exit {
+    width: 70px;
+    height: 50px;
+    position: absolute;
+    top: 70px;
+    left: 1000px;
   }
 }

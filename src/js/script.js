@@ -1,11 +1,17 @@
 var room;
+var player;
+var position;
 var robotOne;
-var robotTwo = document.getElementById('robot__two');
+var robotTwo;
 var laserOne;
-
-// Donner la position initiale du joueur
+var doorOne;
+var doorTwo;
+var doorOffice;
+var doorExit;
+var doorFirst;
 
 // Enter the game when pressing enter, if not already in it
+
 oxo.inputs.listenKey('enter', function () {
   if (oxo.screens.getCurrentScreen !== 'game') {
     oxo.screens.loadScreen('game', game);
@@ -14,10 +20,17 @@ oxo.inputs.listenKey('enter', function () {
 
 function game() {
   room = document.getElementById('room');
-  robotOne = document.getElementById('robot__one');
-  robotTwo = document.getElementById('robot__two');
-  laserOne = document.getElementById('laser__one');
-  laserTwo = document.getElementById('laser__two');
+  player = document.getElementById('player');
+  position = oxo.animation.getPosition(player);
+  robotOne = document.getElementById('robotOne');
+  robotTwo = document.getElementById('robotTwo');
+  laserOne = document.getElementById('laserOne');
+  laserTwo = document.getElementById('laserTwo');
+  doorOne = document.getElementById('doorOne');
+  doorTwo = document.getElementById('doorTwo');
+  doorOffice = document.getElementById('doorOffice');
+  doorExit = document.getElementById('doorExit');
+  doorFirst = document.getElementById('doorFirst');
 
   var wallRight = oxo.elements.createElement({
     type: 'div',
@@ -35,17 +48,16 @@ function game() {
 
   var collision = true;
 
-  oxo.player.setScore(0);
-  var player = document.getElementById('player');
-  oxo.animation.setPosition(player, {x: 300, y: 555});
-  var position = oxo.animation.getPosition(player);
+  oxo.animation.setPosition(player, {x: 300, y: 545});
 
-  if(collision){
+  if (collision) {
     oxo.animation.moveElementWithArrowKeys(player, 100); // Speed of the player
-  }  
+  }
+
+  oxo.elements.onCollisionWithElement(player, doorOffice, changeRoom);
 
   oxo.elements.onCollisionWithElement(player, laserOne, end); // Collision with a laser
-  oxo.elements.onCollisionWithElement(player, laserTwo, end);// Collision with a laser
+  oxo.elements.onCollisionWithElement(player, laserTwo, end); // Collision with a laser
   oxo.elements.onCollisionWithElement(player, robotOne, end); // Collision with a robot
   oxo.elements.onCollisionWithElement(player, robotTwo, end); // Collision with a robot
 
@@ -54,6 +66,48 @@ function game() {
     console.log(collision);
   }); // Collision with a wall
 };
+
+function changeRoom() {
+  oxo.screens.loadScreen('office', office);
+}
+
+function office() {
+  player = document.getElementById('player');
+  doorFirst = document.getElementById('doorFirst');
+  var officeRoom = document.getElementById('officeRoom');
+  
+  wallRight = oxo.elements.createElement({
+    type: 'div',
+    class: '.room__wall .room__wall--right',
+    obstacle: true,
+    appendTo: 'body'
+  });
+
+  wallBottom = oxo.elements.createElement({
+    type: 'div',
+    class: '.room__wall .room__wall--bottom',
+    obstacle: true,
+    appendTo: 'body'
+  });
+  
+  collision = true;
+
+  oxo.animation.setPosition(player, {x: 850, y: 100});
+
+  if (collision) {
+    oxo.animation.moveElementWithArrowKeys(player, 100); // Speed of the player
+  }
+  oxo.elements.onCollisionWithElement(player, laserOne, end); // Collision with a laser
+  oxo.elements.onCollisionWithElement(player, laserTwo, end); // Collision with a laser
+  oxo.elements.onCollisionWithElement(player, robotOne, end); // Collision with a robot
+  oxo.elements.onCollisionWithElement(player, robotTwo, end); // Collision with a robot
+
+  oxo.elements.onCollisionWithElement(player, wallRight, function () {
+    collision = false;
+    console.log('Bottom');
+  }); // Collision with a wall
+
+}
 
 function end() {
   oxo.screens.loadScreen('end');

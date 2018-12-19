@@ -1,5 +1,10 @@
+@import 'config/font.scss';
+
 @import 'vendors/reset';
 
 @import 'global/layout';
 
+@import 'blocs/header.scss';
 @import 'blocs/game.scss';
+@import 'blocs/office.scss';
+@import 'blocs/end.scss';
