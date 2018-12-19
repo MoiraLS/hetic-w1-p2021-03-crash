@@ -1,4 +1,5 @@
-Lien netlify : hetic-w1-p2021-03-crash.netlify.com
+Lien netlify : https://hackworld.netlify.com
+
 
 # `OXO` game library
 
