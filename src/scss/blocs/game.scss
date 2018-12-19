@@ -24,11 +24,6 @@
     left: 120px;
   }
 
-  .room__player {
-    width: 100px;
-    height: 100px;
-  }
-
   .room__decor--top {
     position: absolute;
     top: 60px;
@@ -59,8 +54,8 @@
     width: 890px;
     height: 10px;
     position: absolute;
-    top: 440px;
-    left: 240px;
+    top: 389px;
+    left: 250px;
     background-color: #f75252;
     border-top: solid 2px #ff0000;
     border-bottom: solid 2px #ff0000;
@@ -99,6 +94,7 @@
     left: 1142px;
     background-color: #855a3e;
   }
+
   .room__door--two {
     width: 100px;
     height: 20px;
@@ -107,6 +103,7 @@
     left: 280px;
     background-color: #855a3e;
   }
+
   .room__door--office {
     width: 20px;
     height: 100px;
@@ -115,6 +112,7 @@
     left: 118px;
     background-color: #855a3e;
   }
+
   .room__door--exit {
     width: 70px;
     height: 50px;
@@ -122,4 +120,10 @@
     top: 70px;
     left: 1000px;
   }
+
+  .room__player {
+    width: 80px;
+    height: 130px;
+  }
+
 }

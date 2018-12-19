@@ -38,6 +38,13 @@
     top: 70px;
     right: 130px;
   }
+
+  .officeRoom__paper {
+    width: 20px;
+    position: absolute;
+    top: 130px;
+    right: 300px;
+  }
   
   .officeRoom__carpet {
     width: 30%;
@@ -65,7 +72,7 @@
   }
 
   .officeRoom__player {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 130px;
   }
 }

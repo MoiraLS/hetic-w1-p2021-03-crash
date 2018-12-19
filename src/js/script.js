@@ -48,7 +48,7 @@ function game() {
 
   var collision = true;
 
-  oxo.animation.setPosition(player, {x: 300, y: 545});
+  oxo.animation.setPosition(player, {x: 300, y: 510});
 
   if (collision) {
     oxo.animation.moveElementWithArrowKeys(player, 100); // Speed of the player
@@ -66,6 +66,8 @@ function game() {
     console.log(collision);
   }); // Collision with a wall
 };
+
+/* Function reception to office */
 
 function changeRoom() {
   oxo.screens.loadScreen('office', office);
@@ -92,11 +94,12 @@ function office() {
   
   collision = true;
 
-  oxo.animation.setPosition(player, {x: 850, y: 100});
+  oxo.animation.setPosition(player, {x: 910, y: 140});
 
   if (collision) {
     oxo.animation.moveElementWithArrowKeys(player, 100); // Speed of the player
   }
+  oxo.elements.onCollisionWithElement(player, doorFirst, goReception);
   oxo.elements.onCollisionWithElement(player, laserOne, end); // Collision with a laser
   oxo.elements.onCollisionWithElement(player, laserTwo, end); // Collision with a laser
   oxo.elements.onCollisionWithElement(player, robotOne, end); // Collision with a robot
@@ -107,7 +110,17 @@ function office() {
     console.log('Bottom');
   }); // Collision with a wall
 
+  document.getElementsByClassName('.room__laser').addEventListener('keypress', function () {
+    
+  })
+
 }
+
+/* Function Office to Reception */
+function goReception() {
+  oxo.screens.loadScreen('game', game);
+}
+
 
 function end() {
   oxo.screens.loadScreen('end');
