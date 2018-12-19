@@ -75,4 +75,27 @@
     width: 80px;
     height: 130px;
   }
+
+  .officeRoom__wall--right {
+    width: 10px;
+    height: 83vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .officeRoom__wall--bottom {
+    width: 81vw;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.modalRemote {
+  display: none;
+  
+  &.visible {
+    display: block;  }
 }

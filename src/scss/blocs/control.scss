@@ -1,0 +1,18 @@
+.controlRoom {
+  margin: auto;
+  width: 80vw;
+  height: 80vh;
+  background-image: url(../assets/img/imagesPiece3/ground.jpg);
+  background-size: cover;
+  border: solid #8ad2e4 10px;
+
+  .controlRoom__doorReception {
+    width: 20px;
+    height: 100px;
+    position: absolute;
+    top: 250px;
+    left: 1142px;
+    background-color: #855a3e;
+  }
+  
+}

@@ -13,9 +13,10 @@
     top: 80px;
     left: 120px;
     background-image: url(../assets/img/imagesPiece1/dark.jpg);
-    border: solid #8ad2e4 10px;;
+    border: solid #8ad2e4 10px;
+    ;
   }
-  
+
   .room__vault--goal {
     width: 180px;
     height: 80px;
@@ -29,6 +30,7 @@
     top: 60px;
     left: 600px;
   }
+
   .room__decor--right {
     position: absolute;
     top: 500px;
@@ -39,18 +41,20 @@
     width: 110px;
     height: 140px;
   }
+
   .room__robot--one {
     position: absolute;
     top: 365px;
     left: 140px;
   }
+
   .room__robot--two {
     position: absolute;
     top: 80px;
     right: 360px;
   }
 
-  .room__laser--one {
+  .room__laser--one.visible {
     width: 890px;
     height: 10px;
     position: absolute;
@@ -60,7 +64,8 @@
     border-top: solid 2px #ff0000;
     border-bottom: solid 2px #ff0000;
   }
-  .room__laser--two {
+
+  .room__laser--two.visible {
     width: 10px;
     height: 500px;
     position: absolute;
@@ -71,22 +76,28 @@
     border-right: solid 2px #ff0000;
   }
 
+  .room__laser {
+    &.invisible {
+      display: none;
+    }
+  }
   .room__wall--right {
     width: 10px;
     height: 83vh;
     position: absolute;
-    top: 80px;
-    right: 120px;
+    top: 0;
+    left: 0;
   }
+
   .room__wall--bottom {
     width: 81vw;
     height: 10px;
     position: absolute;
-    bottom: 60px;
-    left: 120px;
+    top: 0;
+    left: 0;
   }
 
-  .room__door--one {
+  .room__door--control {
     width: 20px;
     height: 100px;
     position: absolute;
@@ -125,5 +136,4 @@
     width: 80px;
     height: 130px;
   }
-
 }
