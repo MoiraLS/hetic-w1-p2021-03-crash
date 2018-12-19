@@ -6,7 +6,7 @@
   background-size: cover;
   border: solid #8ad2e4 10px;
 
-  .room__vault {
+  .roomVault {
     width: 400px;
     height: 200px;
     position: absolute;
@@ -17,12 +17,27 @@
     ;
   }
 
-  .room__vault--goal {
+  .roomVault--goal {
     width: 180px;
     height: 80px;
     position: absolute;
     top: 70px;
     left: 120px;
+  }
+
+  .roomVault__wall--bottom {
+    width: 300px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .roomVault__wall--right {
+    width: 10px;
+    height: 55px;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .room__decor--top {

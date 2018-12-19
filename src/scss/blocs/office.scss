@@ -19,6 +19,7 @@
     top: 115px;
     left: 140px;
   }
+
   .officeRoom__chair {
     width: 7%;
     position: absolute;
@@ -32,6 +33,7 @@
     top: 70px;
     right: 325px;
   }
+
   .officeRoom__shelf--two {
     width: 18%;
     position: absolute;
@@ -45,7 +47,7 @@
     top: 130px;
     right: 300px;
   }
-  
+
   .officeRoom__carpet {
     width: 30%;
     position: absolute;
@@ -95,7 +97,41 @@
 
 .modalRemote {
   display: none;
-  
+
   &.visible {
-    display: block;  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    top: 220px;
+    left: 335px;
+    padding: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    color: white;
+    background: rgba(46, 46, 46, 0.9);
+    border: solid 5px #8ad2e4;
+  }
+
+  .modalRemote__congrat {
+    font-size: 55px;
+    font-family: 'PressStart2P', monospace;
+    color: #ffe600;
+  }
+
+  .modalRemote__instructions {
+    text-align: center;
+  }
+  em {
+    font-style: oblique;
+    color: #ffe600;
+  }
+  
+  strong {
+    font-weight: bold;
+    color: rgb(255, 230, 0);
+  }
 }

@@ -55,6 +55,26 @@ function game(from) {
     appendTo: '.room'
   });
 
+  var wallVaultRoom = oxo.elements.createElement({
+    type: 'div',
+    class: 'roomVault__wall--bottom',
+    styles: {
+      transform: 'translate(100px, 200px)'
+    },
+    obstacle: true,
+    appendTo: '.room'
+  });
+
+  var wallVaultRoom1 = oxo.elements.createElement({
+    type: 'div',
+    class: 'roomVault__wall--right',
+    styles: {
+      transform: 'translate(420px, 90px)'
+    },
+    obstacle: true,
+    appendTo: '.room'
+  });
+
   var collision = true;
 
   if (from === 'office') {
@@ -66,10 +86,10 @@ function game(from) {
   }
 
   if (collision) {
-    oxo.animation.moveElementWithArrowKeys(player, 100); // Speed of the player
+    oxo.animation.moveElementWithArrowKeys(player, 150); // Speed of the player
   }
 
-  oxo.elements.onCollisionWithElement(player, doorOffice, changeRoom);
+  oxo.elements.onCollisionWithElement(player, doorOffice, goOffice);
   oxo.elements.onCollisionWithElement(player, doorControl, goControl);
 
   oxo.elements.onCollisionWithElement(player, laserOne, end); // Collision with a laser
@@ -85,14 +105,25 @@ function game(from) {
 
 /* Function reception to office */
 
-function changeRoom() {
+function goOffice() {
   oxo.screens.loadScreen('office', office);
 }
 
 function goControl() {
-  oxo.screens.loadScreen('control', office);
+  oxo.screens.loadScreen('control', control);
 }
 
+/* Function Office to Reception */
+function goReception() {
+  oxo.screens.loadScreen('game', function() {game('office')});
+}
+function goReception1() {
+  oxo.screens.loadScreen('game', function() {game('control')});
+}
+
+function goControl() {
+  oxo.screens.loadScreen('control', control);
+}
 
 /* Function for the office */
 function office() {
@@ -104,9 +135,12 @@ function office() {
   oxo.elements.onCollisionWithElement(player, remote, function() {
     remote.remove();
 
-    document.querySelector('.modalRemote').classList.add('visible'); // Ici créer la pop-up "vous avez récupérer la télécommande" en html
-
-    oxo.inputs.listenKey('z', deactivateLaser);
+    document.querySelector('.modalRemote').classList.add('visible'); // Pop-up remote
+    var popup = document.querySelector('.modalRemote');
+    oxo.elements.onCollisionWithElement(player, popup, function() {
+      document.querySelector('.modalRemote').classList.remove('visible');
+    });
+    oxo.inputs.listenKey('z', desactivateLaser);
   })
   
   var wallRight = oxo.elements.createElement({
@@ -134,7 +168,7 @@ function office() {
   oxo.animation.setPosition(player, {x: 910, y: 140});
 
   if (collision) {
-    oxo.animation.moveElementWithArrowKeys(player, 100); // Speed of the player
+    oxo.animation.moveElementWithArrowKeys(player, 150); // Speed of the player
   }
   oxo.elements.onCollisionWithElement(player, doorFirst, goReception);
 
@@ -150,19 +184,10 @@ function office() {
 }
 
 /* Function for the control room */
-function office() {
+function control() {
   player = document.getElementById('player');
-  doorFirst = document.getElementById('doorFirst');
-  var officeRoom = document.getElementById('officeRoom');
-
-  var remote = document.querySelector('.officeRoom__remoteControl');
-  oxo.elements.onCollisionWithElement(player, remote, function() {
-    remote.remove();
-
-    document.querySelector('.modalRemote').classList.add('visible'); // Ici créer la pop-up "vous avez récupérer la télécommande" en html
-
-    oxo.inputs.listenKey('z', deactivateLaser);
-  })
+  doorReception = document.getElementById('controlRoom__doorReception');
+  var controlRoom = document.getElementById('controlRoom');
   
   var wallRight = oxo.elements.createElement({
     type: 'div',
@@ -186,12 +211,12 @@ function office() {
   
   collision = true;
 
-  oxo.animation.setPosition(player, {x: 910, y: 140});
+  oxo.animation.setPosition(player, {x: 150, y: 110});
 
   if (collision) {
-    oxo.animation.moveElementWithArrowKeys(player, 100); // Speed of the player
+    oxo.animation.moveElementWithArrowKeys(player, 150); // Speed of the player
   }
-  oxo.elements.onCollisionWithElement(player, doorFirst, goReception);
+  oxo.elements.onCollisionWithElement(player, doorReception, goReception1);
 
   oxo.elements.onCollisionWithElement(player, laserOne, end); // Collision with a laser
   oxo.elements.onCollisionWithElement(player, laserTwo, end); // Collision with a laser
@@ -199,22 +224,16 @@ function office() {
   oxo.elements.onCollisionWithElement(player, robotTwo, end); // Collision with a robot
 }
 
-/* Function Office to Reception */
-function goReception() {
-  oxo.screens.loadScreen('game', function() {game('office')});
-}
-
-
-function deactivateLaser() {
+function desactivateLaser() {
   if (!canPressZ) {
-    console.log('Vous ne pouvez pas encore faire cela');
+    console.log('nope');
     return;
   } else if (canPressZ === true) {
     document.querySelector('.room__laser').classList.add('invisible');
   }
 
   canPressZ = false;
-  console.log('Les lasers sont désactivés !')
+  console.log('Allez-y')
 
   setTimeout(activateLaser, 1000);
 
