@@ -1,5 +1,12 @@
 .win {
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  
   .win__title {
     font-size: 80px;
     font-family: "PressStart2P", sans-serif;
@@ -11,10 +18,12 @@
     font-size: 60px;
     font-family: "PressStart2P", sans-serif;
     color: whitesmoke;
+    margin-bottom: 50px; 
   }
 
   p {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
+    color: whitesmoke;
   }
 }

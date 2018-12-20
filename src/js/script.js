@@ -119,15 +119,15 @@ function game(from) {
       document.querySelector('.password').classList.remove('visible');
       oxo.elements.onCollisionWithElement(player, bankData, function () {
         bankData.remove();
+        document.querySelector('.takeData').classList.add('visible'); // Pop-up bankData
+        var takeData = document.querySelector('.takeData');
+        oxo.elements.onCollisionWithElement(player, takeData, function () {
+          document.querySelector('.takeData').classList.remove('visible');
+        });
       });
       oxo.elements.onCollisionWithElement(player, doorExit, function () {
-        console.log('touché');
         oxo.screens.loadScreen('win');
       });
-    } else {
-      oxo.elements.onCollisionWithElement(player, doorExit, function () {
-        oxo.screens.loadScreen('end');
-      })
     }
   });
 

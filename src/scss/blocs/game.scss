@@ -32,6 +32,7 @@
     top: 0;
     left: 0;
   }
+
   .roomVault__wall--right {
     width: 10px;
     height: 55px;
@@ -100,6 +101,7 @@
       display: none;
     }
   }
+
   .room__wall--right {
     width: 10px;
     height: 83vh;
@@ -168,8 +170,8 @@
     width: 300px;
     height: 200px;
     position: absolute;
-    top: 360px;
-    left: 440px;
+    top: 330px;
+    left: 470px;
     padding: 40px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 28px;
@@ -184,7 +186,7 @@
     color: #ffe600;
     text-align: center;
   }
-  
+
   .password__answer {
     height: 20px;
     font-size: 20px;
@@ -196,5 +198,49 @@
     font-size: 17px;
     background: white;
     margin-left: 20px;
+  }
+}
+
+.takeData {
+  display: none;
+
+  &.visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    top: 320px;
+    left: 360px;
+    padding: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    color: white;
+    background: rgba(46, 46, 46, 0.9);
+    border: solid 5px #8ad2e4;
+  }
+
+  .takeData__congrat {
+    font-size: 55px;
+    font-family: 'PressStart2P', monospace;
+    color: #ffe600;
+  }
+
+  .takeData__text,
+  .takeData__instructions {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+  }
+
+  em {
+    font-style: oblique;
+    color: #ffe600;
+  }
+  
+  strong {
+    font-weight: bold;
+    color: rgb(255, 230, 0);
   }
 }
