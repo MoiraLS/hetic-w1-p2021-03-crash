@@ -5,16 +5,19 @@ var robotOne;
 var robotTwo;
 var laserOne;
 var doorOne;
-var doorTwo;
+var doorGoal;
 var doorOffice;
 var doorControl;
+var terminal;
+var doorReception;
 var doorExit;
 var doorFirst;
 var canPressZ = true;
 
+
 // Enter the game when pressing enter, if not already in it
 
-oxo.inputs.listenKey('enter', function () {
+oxo.inputs.listenKeyOnce('enter', function () {
   if (oxo.screens.getCurrentScreen !== 'game') {
     oxo.screens.loadScreen('game', game);
   }
@@ -29,7 +32,7 @@ function game(from) {
   laserOne = document.getElementById('laserOne');
   laserTwo = document.getElementById('laserTwo');
   doorOne = document.getElementById('doorOne');
-  doorTwo = document.getElementById('doorTwo');
+  doorGoal = document.getElementById('doorGoal');
   doorOffice = document.getElementById('doorOffice');
   doorControl = document.getElementById('doorControl');
   doorExit = document.getElementById('doorExit');
@@ -69,7 +72,7 @@ function game(from) {
     type: 'div',
     class: 'roomVault__wall--right',
     styles: {
-      transform: 'translate(420px, 90px)'
+      transform: 'translate(400px, 90px)'
     },
     obstacle: true,
     appendTo: '.room'
@@ -78,11 +81,20 @@ function game(from) {
   var collision = true;
 
   if (from === 'office') {
-    oxo.animation.setPosition(player, {x: 43, y: 476});
+    oxo.animation.setPosition(player, {
+      x: 43,
+      y: 476
+    });
   } else if (from === 'control') {
-    oxo.animation.setPosition(player, {x: 800, y: 80});
+    oxo.animation.setPosition(player, {
+      x: 900,
+      y: 80
+    });
   } else {
-    oxo.animation.setPosition(player, {x: 300, y: 510});
+    oxo.animation.setPosition(player, {
+      x: 300,
+      y: 510
+    });
   }
 
   if (collision) {
@@ -91,6 +103,13 @@ function game(from) {
 
   oxo.elements.onCollisionWithElement(player, doorOffice, goOffice);
   oxo.elements.onCollisionWithElement(player, doorControl, goControl);
+  oxo.elements.onCollisionWithElement(player, doorGoal, function () {
+    document.querySelector('.question').classList.add('visible'); // Pop-up password
+    var question = document.querySelector('.question');
+    oxo.elements.onCollisionWithElement(player, question, function () {
+      document.querySelector('.question').classList.remove('visible');
+    });
+  })
 
   oxo.elements.onCollisionWithElement(player, laserOne, end); // Collision with a laser
   oxo.elements.onCollisionWithElement(player, laserTwo, end); // Collision with a laser
@@ -99,7 +118,6 @@ function game(from) {
 
   oxo.elements.onCollisionWithElement(player, wallBottom, function () {
     collision = false;
-    console.log(collision);
   }); // Collision with a wall
 };
 
@@ -115,10 +133,15 @@ function goControl() {
 
 /* Function Office to Reception */
 function goReception() {
-  oxo.screens.loadScreen('game', function() {game('office')});
+  oxo.screens.loadScreen('game', function () {
+    game('office')
+  });
 }
+
 function goReception1() {
-  oxo.screens.loadScreen('game', function() {game('control')});
+  oxo.screens.loadScreen('game', function () {
+    game('control')
+  });
 }
 
 function goControl() {
@@ -132,17 +155,17 @@ function office() {
   var officeRoom = document.getElementById('officeRoom');
 
   var remote = document.querySelector('.officeRoom__remoteControl');
-  oxo.elements.onCollisionWithElement(player, remote, function() {
+  oxo.elements.onCollisionWithElement(player, remote, function () {
     remote.remove();
 
     document.querySelector('.modalRemote').classList.add('visible'); // Pop-up remote
     var popup = document.querySelector('.modalRemote');
-    oxo.elements.onCollisionWithElement(player, popup, function() {
+    oxo.elements.onCollisionWithElement(player, popup, function () {
       document.querySelector('.modalRemote').classList.remove('visible');
     });
     oxo.inputs.listenKey('z', desactivateLaser);
   })
-  
+
   var wallRight = oxo.elements.createElement({
     type: 'div',
     class: 'officeRoom__wall officeRoom__wall--right',
@@ -162,10 +185,13 @@ function office() {
     obstacle: true,
     appendTo: '.officeRoom'
   });
-  
+
   collision = true;
 
-  oxo.animation.setPosition(player, {x: 910, y: 140});
+  oxo.animation.setPosition(player, {
+    x: 910,
+    y: 140
+  });
 
   if (collision) {
     oxo.animation.moveElementWithArrowKeys(player, 150); // Speed of the player
@@ -186,9 +212,10 @@ function office() {
 /* Function for the control room */
 function control() {
   player = document.getElementById('player');
-  doorReception = document.getElementById('controlRoom__doorReception');
+  doorReception = document.getElementById('doorReception');
+  terminal = document.getElementById('terminal');
   var controlRoom = document.getElementById('controlRoom');
-  
+
   var wallRight = oxo.elements.createElement({
     type: 'div',
     class: 'officeRoom__wall officeRoom__wall--right',
@@ -208,15 +235,25 @@ function control() {
     obstacle: true,
     appendTo: '.officeRoom'
   });
-  
+
   collision = true;
 
-  oxo.animation.setPosition(player, {x: 150, y: 110});
+  oxo.animation.setPosition(player, {
+    x: 60,
+    y: 90
+  });
 
   if (collision) {
     oxo.animation.moveElementWithArrowKeys(player, 150); // Speed of the player
   }
   oxo.elements.onCollisionWithElement(player, doorReception, goReception1);
+  oxo.elements.onCollisionWithElement(player, terminal, function () {
+    document.querySelector('.findPassword').classList.add('visible'); // Pop-up riddle
+    var riddle = document.querySelector('.findPassword');
+    oxo.elements.onCollisionWithElement(player, riddle, function () {
+      document.querySelector('.findPassword').classList.remove('visible');
+    });
+  })
 
   oxo.elements.onCollisionWithElement(player, laserOne, end); // Collision with a laser
   oxo.elements.onCollisionWithElement(player, laserTwo, end); // Collision with a laser
@@ -229,7 +266,9 @@ function desactivateLaser() {
     console.log('nope');
     return;
   } else if (canPressZ === true) {
-    document.querySelector('.room__laser').classList.add('invisible');
+    document.querySelectorAll('.room__laser').forEach(function (laser) {
+      laser.classList.add('invisible');
+    });
   }
 
   canPressZ = false;
@@ -237,16 +276,26 @@ function desactivateLaser() {
 
   setTimeout(activateLaser, 1000);
 
-  setTimeout(function() {
+  setTimeout(function () {
     canPressZ = true;
   }, 3000);
 
   function activateLaser() {
-    document.querySelector('.room__laser').classList.remove('invisible');
-    document.querySelector('.room__laser').classList.add('visible');
+    document.querySelectorAll('.room__laser').forEach(function (laser) {
+      laser.classList.remove('invisible');
+      laser.classList.add('visible');
+    });
   }
 }
 
 function end() {
+  oxo.inputs.cancelKeyListener('z', desactivateLaser);
+
   oxo.screens.loadScreen('end');
-};
+
+  oxo.inputs.listenKeyOnce('enter', function () {
+    if (oxo.screens.getCurrentScreen !== 'game') {
+      oxo.screens.loadScreen('game', game);
+    }
+  });
+}
