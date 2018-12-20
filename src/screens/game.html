@@ -2,10 +2,15 @@
   <h1 class="title">HACK WORLD</h1>
 </header>
 
+
+<audio autoplay loop>
+    <source src="../assets/mp3/music.mp3" type="audio/mp3">
+  </audio>
+
 <div class="room" id="room">
 
   <div class="roomVault">
-    <img class="roomVault--goal" src="../assets/img/imagesPiece1/bankData.png" alt="Bank Data">
+    <img class="roomVault--goal" id="bankData" src="../assets/img/imagesPiece1/bankData.png" alt="Bank Data">
   </div>
 
   <img class="room__decor room__decor--top" src="../assets/img/imagesPiece1/deco1.png" alt="Decor">
@@ -26,9 +31,9 @@
 
 <div class="password">
   <h2 class="password__title">Mot de passe</h2><br>
-  <form>
+  <form id="form">
     <input class="password__answer" type="text" required>
-    <button class="password__button" type="submit">Valider</button>
+    <button class="password__button" id="button" type="submit">Valider</button>
   </form>
 </div>
 

@@ -34,6 +34,13 @@
     left: 630px;
   }
 
+  .controlRoom__paper {
+    width: 20px;
+    position: absolute;
+    top: 100px;
+    right: 430px;
+  }
+
   .controlRoom__carpet {
     width: 27%;
     position: absolute;
@@ -111,5 +118,34 @@
   .findPassword__riddle {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+  }
+}
+
+.riddle {
+  display: none;
+
+  &.visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    height: 200px;
+    position: absolute;
+    top: 260px;
+    left: 340px;
+    padding: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    color: white;
+    background: rgba(46, 46, 46, 0.9);
+    border: solid 5px #8ad2e4;
+  }
+
+  .riddle__title {
+    font-size: 43px;
+    font-family: 'PressStart2P', monospace;
+    color: #ffe600;
+    text-align: center;
   }
 }

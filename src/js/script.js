@@ -12,9 +12,8 @@ var terminal;
 var doorReception;
 var doorExit;
 var doorFirst;
-var answerRiddle;
-var passwordAnswer;
 var canPressZ = true;
+var bankData;
 
 // Enter the game when pressing enter, if not already in it
 
@@ -38,8 +37,7 @@ function game(from) {
   doorControl = document.getElementById('doorControl');
   doorExit = document.getElementById('doorExit');
   doorFirst = document.getElementById('doorFirst');
-  answerRiddle = 'secret';
-  passwordAnswer = '';
+  bankData = document.getElementById('bankData');
 
   var wallRight = oxo.elements.createElement({
     type: 'div',
@@ -106,18 +104,32 @@ function game(from) {
 
   oxo.elements.onCollisionWithElement(player, doorOffice, goOffice);
   oxo.elements.onCollisionWithElement(player, doorControl, goControl);
-  oxo.elements.onCollisionWithElement(player, doorGoal, function () {
+
+  /* Password to enter in vaultRoom */
+  oxo.elements.onCollisionWithElementOnce(player, doorGoal, function () {
     document.querySelector('.password').classList.add('visible'); // Pop-up password
     var password = document.querySelector('.password');
-    oxo.elements.onCollisionWithElement(player, password, function () {
-      document.querySelector('.password').classList.remove('visible');
-    });
-    if(passwordAnswer === answerRiddle) {
+  });
+
+  /* Take the bankData and left the game */
+  document.getElementById('form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (event.target.querySelector('input').value === 'secret') {
       wallVaultRoom1.classList.add('invisible');
-      
+      document.querySelector('.password').classList.remove('visible');
+      oxo.elements.onCollisionWithElement(player, bankData, function () {
+        bankData.remove();
+      });
+      oxo.elements.onCollisionWithElement(player, doorExit, function () {
+        console.log('touché');
+        oxo.screens.loadScreen('win');
+      });
+    } else {
+      oxo.elements.onCollisionWithElement(player, doorExit, function () {
+        oxo.screens.loadScreen('end');
+      })
     }
-  })
-  oxo.elements.onCollisionWithElement(player, doorExit, end);
+  });
 
   oxo.elements.onCollisionWithElement(player, laserOne, end); // Collision with a laser
   oxo.elements.onCollisionWithElement(player, laserTwo, end); // Collision with a laser
@@ -130,30 +142,27 @@ function game(from) {
 };
 
 /* Function reception to office */
-
 function goOffice() {
   oxo.screens.loadScreen('office', office);
 }
 
+/* Function reception to control */
 function goControl() {
   oxo.screens.loadScreen('control', control);
 }
 
-/* Function Office to Reception */
+/* Function office to reception */
 function goReception() {
   oxo.screens.loadScreen('game', function () {
     game('office')
   });
 }
 
+/* Function control to reception */
 function goReception1() {
   oxo.screens.loadScreen('game', function () {
     game('control')
   });
-}
-
-function goControl() {
-  oxo.screens.loadScreen('control', control);
 }
 
 /* Function for the office */
@@ -262,6 +271,14 @@ function control() {
       document.querySelector('.findPassword').classList.remove('visible');
     });
   })
+  var clue = document.querySelector('.controlRoom__paper');
+  oxo.elements.onCollisionWithElement(player, clue, function () {
+    document.querySelector('.riddle').classList.add('visible'); // Pop-up clue
+    var clue = document.querySelector('.riddle');
+    oxo.elements.onCollisionWithElement(player, clue, function () {
+      document.querySelector('.riddle').classList.remove('visible');
+    });
+  })
 
   oxo.elements.onCollisionWithElement(player, laserOne, end); // Collision with a laser
   oxo.elements.onCollisionWithElement(player, laserTwo, end); // Collision with a laser
@@ -269,9 +286,9 @@ function control() {
   oxo.elements.onCollisionWithElement(player, robotTwo, end); // Collision with a robot
 }
 
+/* Function to desactivate laser */
 function desactivateLaser() {
   if (!canPressZ) {
-    console.log('nope');
     return;
   } else if (canPressZ === true) {
     document.querySelectorAll('.room__laser').forEach(function (laser) {
@@ -280,7 +297,6 @@ function desactivateLaser() {
   }
 
   canPressZ = false;
-  console.log('Allez-y')
 
   setTimeout(activateLaser, 1000);
 
@@ -288,6 +304,7 @@ function desactivateLaser() {
     canPressZ = true;
   }, 3000);
 
+  /* Function to activate laser */
   function activateLaser() {
     document.querySelectorAll('.room__laser').forEach(function (laser) {
       laser.classList.remove('invisible');
@@ -296,6 +313,7 @@ function desactivateLaser() {
   }
 }
 
+/* Fonction game to end */
 function end() {
   oxo.inputs.cancelKeyListener('z', desactivateLaser);
 
