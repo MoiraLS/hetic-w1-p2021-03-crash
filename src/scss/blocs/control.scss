@@ -23,11 +23,13 @@
   .controlRoom__shelf {
     width: 20%;
   }
+
   .controlRoom__shelf--one {
     position: absolute;
     top: 80px;
     left: 400px;
   }
+
   .controlRoom__shelf--two {
     position: absolute;
     top: 80px;
@@ -59,11 +61,13 @@
   .controlRoom__term {
     width: 10%;
   }
+
   .controlRoom__term--one {
     position: absolute;
     top: 300px;
     right: 120px;
   }
+
   .controlRoom__term--two {
     position: absolute;
     top: 455px;
@@ -77,7 +81,7 @@
     top: 0;
     left: 0;
   }
-  
+
   .controlRoom__wall--bottom {
     width: 81vw;
     height: 10px;
