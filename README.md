@@ -1,5 +1,6 @@
 Lien netlify : https://hackworld.netlify.com
 
+À tester en 1280x800.
 
 # `OXO` game library
 
