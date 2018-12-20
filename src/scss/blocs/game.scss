@@ -38,6 +38,10 @@
     position: absolute;
     top: 0;
     left: 0;
+
+    &.invisible {
+      display: none;
+    }
   }
 
   .room__decor--top {
@@ -153,7 +157,7 @@
   }
 }
 
-.question {
+.password {
   display: none;
 
   &.visible {
@@ -174,20 +178,20 @@
     border: solid 5px #8ad2e4;
   }
 
-  .question__title {
+  .password__title {
     font-size: 43px;
     font-family: 'PressStart2P', monospace;
     color: #ffe600;
     text-align: center;
   }
   
-  .question__answer {
+  .password__answer {
     height: 20px;
     font-size: 20px;
     font-family: "TemploFino", monospace;
   }
 
-  .question__button {
+  .password__button {
     height: 25px;
     font-size: 17px;
     background: white;

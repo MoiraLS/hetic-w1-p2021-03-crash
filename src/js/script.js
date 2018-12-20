@@ -12,8 +12,9 @@ var terminal;
 var doorReception;
 var doorExit;
 var doorFirst;
+var answerRiddle;
+var passwordAnswer;
 var canPressZ = true;
-
 
 // Enter the game when pressing enter, if not already in it
 
@@ -37,6 +38,8 @@ function game(from) {
   doorControl = document.getElementById('doorControl');
   doorExit = document.getElementById('doorExit');
   doorFirst = document.getElementById('doorFirst');
+  answerRiddle = 'secret';
+  passwordAnswer = '';
 
   var wallRight = oxo.elements.createElement({
     type: 'div',
@@ -104,12 +107,17 @@ function game(from) {
   oxo.elements.onCollisionWithElement(player, doorOffice, goOffice);
   oxo.elements.onCollisionWithElement(player, doorControl, goControl);
   oxo.elements.onCollisionWithElement(player, doorGoal, function () {
-    document.querySelector('.question').classList.add('visible'); // Pop-up password
-    var question = document.querySelector('.question');
-    oxo.elements.onCollisionWithElement(player, question, function () {
-      document.querySelector('.question').classList.remove('visible');
+    document.querySelector('.password').classList.add('visible'); // Pop-up password
+    var password = document.querySelector('.password');
+    oxo.elements.onCollisionWithElement(player, password, function () {
+      document.querySelector('.password').classList.remove('visible');
     });
+    if(passwordAnswer === answerRiddle) {
+      wallVaultRoom1.classList.add('invisible');
+      
+    }
   })
+  oxo.elements.onCollisionWithElement(player, doorExit, end);
 
   oxo.elements.onCollisionWithElement(player, laserOne, end); // Collision with a laser
   oxo.elements.onCollisionWithElement(player, laserTwo, end); // Collision with a laser
@@ -218,22 +226,22 @@ function control() {
 
   var wallRight = oxo.elements.createElement({
     type: 'div',
-    class: 'officeRoom__wall officeRoom__wall--right',
+    class: 'controlRoom__wall controlRoom__wall--right',
     styles: {
-      transform: 'translate(1030px, 80px)'
+      transform: 'translate(1020px, 80px)'
     },
     obstacle: true,
-    appendTo: '.officeRoom'
+    appendTo: '.controlRoom'
   });
 
   var wallBottom = oxo.elements.createElement({
     type: 'div',
-    class: 'officeRoom__wall officeRoom__wall--bottom',
+    class: 'controlRoom__wall controlRoom__wall--bottom',
     styles: {
-      transform: 'translate(100px, 630px)'
+      transform: 'translate(100px, 635px)'
     },
     obstacle: true,
-    appendTo: '.officeRoom'
+    appendTo: '.controlRoom'
   });
 
   collision = true;

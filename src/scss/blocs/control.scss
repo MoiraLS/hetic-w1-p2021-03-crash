@@ -62,6 +62,22 @@
     top: 455px;
     right: 120px;
   }
+
+  .controlRoom__wall--right {
+    width: 10px;
+    height: 83vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .controlRoom__wall--bottom {
+    width: 81vw;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
 
 .findPassword {
@@ -75,8 +91,8 @@
     width: 500px;
     height: 200px;
     position: absolute;
-    top: 160px;
-    left: 240px;
+    top: 260px;
+    left: 340px;
     padding: 40px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 28px;

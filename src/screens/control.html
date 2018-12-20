@@ -1,44 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<header class="header">
+  <h1 class="title">HACK WORLD</h1>
+</header>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script defer src="../js/libs/oxo.js"></script>
-  <script defer src="../js/script.js"></script>
-  <link rel="stylesheet" href="../scss/styles.scss" />
-  <title>Hack World</title>
-</head>
+<div class="controlRoom" id="controlRoom">
 
-<body>
-  <header class="header">
-    <h1 class="title">HACK WORLD</h1>
-  </header>
+  <div class="controlRoom__doorReception" id="doorReception"></div>
 
-  <div class="controlRoom" id="controlRoom">
+  <img class="controlRoom__shelf controlRoom__shelf--one" src="../assets/img/imagesPiece3/deco1.png" alt="Shelf">
+  <img class="controlRoom__shelf controlRoom__shelf--two" src="../assets/img/imagesPiece3/deco1.png" alt="Shelf">
 
-    <div class="controlRoom__doorReception" id="doorReception"></div>
+  <img class="controlRoom__term controlRoom__term--one" id="terminal" src="../assets/img/imagesPiece3/terminal.png" alt="Terminal">
+  <img class="controlRoom__term controlRoom__term--two" src="../assets/img/imagesPiece3/terminal.png" alt="Terminal">
 
-    <img class="controlRoom__shelf controlRoom__shelf--one" src="../assets/img/imagesPiece3/deco1.png" alt="Shelf">
-    <img class="controlRoom__shelf controlRoom__shelf--two" src="../assets/img/imagesPiece3/deco1.png" alt="Shelf">
+  <img class="controlRoom__chair" src="../assets/img/imagesPiece3/chaise2.png" alt="Chair">
 
-    <img class="controlRoom__term controlRoom__term--one" id="terminal" src="../assets/img/imagesPiece3/terminal.png" alt="Terminal">
-    <img class="controlRoom__term controlRoom__term--two" src="../assets/img/imagesPiece3/terminal.png" alt="Terminal">
+  <img class="controlRoom__carpet" src="../assets/img/imagesPiece3/carpet2.jpg" alt="Carpet">
 
-    <img class="controlRoom__chair" src="../assets/img/imagesPiece3/chaise2.png" alt="Chair">
+  <img src="../assets/img/imagesPiece1/perso.png" alt="Hacker" class="controlRoom__player" id="player">
 
-    <img class="controlRoom__carpet" src="../assets/img/imagesPiece3/carpet2.jpg" alt="Carpet">
+</div>
 
-    <img src="../assets/img/imagesPiece1/perso.png" alt="Hacker" class="controlRoom__player" id="player">
-
-  </div>
-
-  <div class="findPassword">
-    <h2 class="findPassword__title">Trouvez la solution</h2><br>
-    <p class="findPassword__riddle">enigmeenigmeenigme enigmeenigmeenigmeenigme</p>
-  </div>
-
-</body>
-
-</html>
+<div class="findPassword">
+  <h2 class="findPassword__title">Trouvez la solution</h2><br>
+  <p class="findPassword__riddle">Plus j'ai de gardiens moins je suis gardé. Moins j'ai de gardiens plus je suis gardé.
+    Qui suis-je ?</p>
+</div>

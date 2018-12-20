@@ -1,53 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<header class="header">
+  <h1 class="title">HACK WORLD</h1>
+</header>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script defer src="../js/libs/oxo.js"></script>
-  <script defer src="../js/script.js"></script>
-  <link rel="stylesheet" href="../scss/styles.scss" />
-  <title>Hack World</title>
-</head>
+<div class="room" id="room">
 
-<body>
-
-  <header class="header">
-    <h1 class="title">HACK WORLD</h1>
-  </header>
-
-  <div class="room" id="room">
-    
-    <div class="roomVault">
-      <img class="roomVault--goal" src="../assets/img/imagesPiece1/bankData.png" alt="Bank Data">
-    </div>
-
-    <img class="room__decor room__decor--top" src="../assets/img/imagesPiece1/deco1.png" alt="Decor">
-    <img class="room__decor room__decor--right" src="../assets/img/imagesPiece1/deco2.png" alt="Decor">
-    <img class="room__robot room__robot--one" id="robotOne" src="../assets/img/imagesPiece1/robot1.png" alt="Robot">
-    <img class="room__robot room__robot--two" id="robotTwo" src="../assets/img/imagesPiece1/robot2.png" alt="Robot">
-    <div class="room__laser visible room__laser--one" id="laserOne"></div>
-    <div class="room__laser visible room__laser--two" id="laserTwo"></div>
-
-    <div class="room__door room__door--control" id="doorControl"></div>
-    <div class="room__door room__door--goal" id="doorGoal"></div>
-    <div class="room__door room__door--office" id="doorOffice"></div>
-    <img class="room__door room__door--exit" id="doorExit" src="../assets/img/imagesPiece1/exit.png" alt="Exit">
-
-    <img src="../assets/img/imagesPiece1/perso.png" alt="Hacker" class="room__player" id="player">
-
+  <div class="roomVault">
+    <img class="roomVault--goal" src="../assets/img/imagesPiece1/bankData.png" alt="Bank Data">
   </div>
 
-  <div class="question">
-    <h2 class="question__title">Mot de passe</h2><br>
-    <form>
-      <input class="question__answer" type="text" required>
-      <button class="question__button" type="submit">Valider</button>
-    </form>
-  </div>
-  <!-- Score sous forme de pourcentage (si premier indice récupérer par exemple joueur à 25% du niveau) -->
+  <img class="room__decor room__decor--top" src="../assets/img/imagesPiece1/deco1.png" alt="Decor">
+  <img class="room__decor room__decor--right" src="../assets/img/imagesPiece1/deco2.png" alt="Decor">
+  <img class="room__robot room__robot--one" id="robotOne" src="../assets/img/imagesPiece1/robot1.png" alt="Robot">
+  <img class="room__robot room__robot--two" id="robotTwo" src="../assets/img/imagesPiece1/robot2.png" alt="Robot">
+  <div class="room__laser visible room__laser--one" id="laserOne"></div>
+  <div class="room__laser visible room__laser--two" id="laserTwo"></div>
 
-</body>
+  <div class="room__door room__door--control" id="doorControl"></div>
+  <div class="room__door room__door--goal" id="doorGoal"></div>
+  <div class="room__door room__door--office" id="doorOffice"></div>
+  <img class="room__door room__door--exit" id="doorExit" src="../assets/img/imagesPiece1/exit.png" alt="Exit">
 
-</html>
+  <img src="../assets/img/imagesPiece1/perso.png" alt="Hacker" class="room__player" id="player">
+
+</div>
+
+<div class="password">
+  <h2 class="password__title">Mot de passe</h2><br>
+  <form>
+    <input class="password__answer" type="text" required>
+    <button class="password__button" type="submit">Valider</button>
+  </form>
+</div>
+
+<!-- Score sous forme de pourcentage (si premier indice récupérer par exemple joueur à 25% du niveau) -->
